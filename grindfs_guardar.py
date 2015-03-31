@@ -26,7 +26,6 @@ class FotosGridfs:
 
     def __init__(self, coleccion):
         self.__coleccion = coleccion
-        self.almacen = db.almacen
         self.grid = gridfs.GridFS(db, self.__coleccion)
 
     def consultar(self, pk):
@@ -42,8 +41,6 @@ class FotosGridfs:
             _id = self.grid.put(archivos)
 
         print('el id es: {}'.format(_id))
-
-        self.almacen.insert({'grid_id': _id, 'nombre_foto': archivo})
 
     def borrar(self, pk):
         self.grid.delete(ObjectId(pk))
