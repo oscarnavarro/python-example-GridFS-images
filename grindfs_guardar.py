@@ -44,7 +44,6 @@ class FotosGridfs:
 
     def borrar(self, pk):
         self.grid.delete(ObjectId(pk))
-        self.almacen.remove({"grid_id": ObjectId(pk)})
 
     def listar(self):
         lista = self.grid.find({})
